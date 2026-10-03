@@ -1,0 +1,675 @@
+/* =========================
+   CONFIGURACIÓN GENERAL
+   ========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+
+body {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Arial, sans-serif;
+
+  background:
+    radial-gradient(circle at 20% 20%,
+      rgba(59, 130, 246, 0.5),
+      transparent 30%),
+    radial-gradient(circle at 80% 30%,
+      rgba(168, 85, 247, 0.5),
+      transparent 30%),
+    radial-gradient(circle at 50% 80%,
+      rgba(236, 72, 153, 0.35),
+      transparent 30%),
+    #0f172a;
+
+  background-size: 200% 200%;
+
+  animation: backgroundMove 8s ease-in-out infinite;
+
+  color: white;
+
+  overflow: hidden;
+}
+
+
+
+
+
+
+/* =========================
+   CONTENEDOR PRINCIPAL
+   ========================= */
+
+.birthday-container {
+  width: min(90%, 900px);
+
+  text-align: center;
+
+  padding: 40px 20px;
+
+  position: relative;
+
+  z-index: 1;
+}
+
+
+/* =========================
+   NOMBRE
+   ========================= */
+
+h1 {
+  font-size: clamp(4rem, 12vw, 8rem);
+
+  font-weight: 800;
+
+  letter-spacing: 4px;
+
+  margin-bottom: 10px;
+
+  text-shadow:
+    0 0 10px rgba(96, 165, 250, 0.8),
+    0 0 30px rgba(129, 140, 248, 0.6),
+    0 0 60px rgba(168, 85, 247, 0.4);
+}
+
+
+/* =========================
+   SUBTÍTULO
+   ========================= */
+
+.subtitle {
+  font-size: clamp(1rem, 3vw, 1.5rem);
+
+  color: #cbd5e1;
+
+  margin-bottom: 40px;
+}
+
+
+/* =========================
+   CUENTA REGRESIVA
+   ========================= */
+
+.countdown {
+  display: flex;
+
+  justify-content: center;
+
+  gap: 20px;
+
+  flex-wrap: wrap;
+}
+
+
+/* =========================
+   CADA BLOQUE DE TIEMPO
+   ========================= */
+
+.time-box {
+  min-width: 130px;
+
+  padding: 25px 20px;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.25);
+
+  transition: transform 0.3s ease;
+}
+
+
+/* Efecto al pasar el mouse */
+
+.time-box:hover {
+  filter: brightness(1.2);
+}
+
+
+/* =========================
+   NÚMERO
+   ========================= */
+
+.time-box span {
+  display: block;
+
+  font-size: clamp(2.5rem, 6vw, 4rem);
+
+  font-weight: 700;
+
+  color: #ffffff;
+}
+
+
+/* =========================
+   TEXTO "DÍAS", "HORAS", ETC.
+   ========================= */
+
+.time-box small {
+  display: block;
+
+  margin-top: 5px;
+
+  font-size: 0.9rem;
+
+  text-transform: uppercase;
+
+  letter-spacing: 2px;
+
+  color: #a5b4fc;
+}
+
+
+/* =========================
+   FECHA
+   ========================= */
+
+.birthday-date {
+  margin-top: 40px;
+
+  font-size: 1.2rem;
+
+  color: #e0e7ff;
+
+  letter-spacing: 2px;
+}
+
+
+/* =========================
+   ADAPTACIÓN PARA CELULAR
+   ========================= */
+
+@media (max-width: 600px) {
+
+  .birthday-container {
+    padding: 20px 10px;
+  }
+
+  .countdown {
+    gap: 10px;
+  }
+
+  .time-box {
+    min-width: 110px;
+
+    padding: 18px 12px;
+  }
+
+  .time-box span {
+    font-size: 2.5rem;
+  }
+
+}
+
+
+/* =========================
+   ANIMACIÓN DEL FONDO
+   ========================= */
+
+
+@keyframes backgroundMove {
+
+  0% {
+    background-position: 0% 0%;
+  }
+
+  25% {
+    background-position: 100% 30%;
+  }
+
+  50% {
+    background-position: 70% 100%;
+  }
+
+  75% {
+    background-position: 0% 70%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+
+}
+
+
+
+
+.time-box {
+  animation: floatingBox 3s ease-in-out infinite;
+}
+
+.time-box:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.time-box:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.time-box:nth-child(4) {
+  animation-delay: 0.9s;
+}
+
+@keyframes floatingBox {
+
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+
+}
+
+
+/* =========================
+   GLOBOS
+   ========================= */
+
+.balloons {
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+.balloon {
+  position: absolute;
+
+  font-size: 4rem;
+
+  animation: balloonFloat 4s ease-in-out infinite;
+}
+
+
+/* Posición de cada globo */
+
+.balloon-1 {
+  left: 5%;
+  top: 15%;
+
+  animation-delay: 0s;
+}
+
+.balloon-2 {
+  right: 7%;
+  top: 20%;
+
+  animation-delay: 1s;
+}
+
+.balloon-3 {
+  left: 12%;
+  bottom: 10%;
+
+  animation-delay: 2s;
+}
+
+.balloon-4 {
+  right: 15%;
+  bottom: 12%;
+
+  animation-delay: 3s;
+}
+
+
+/* Movimiento */
+
+@keyframes balloonFloat {
+
+  0% {
+    transform: translateY(0) rotate(-5deg);
+  }
+
+  50% {
+    transform: translateY(-25px) rotate(5deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+
+}
+
+
+
+/* =========================
+   CONFETI
+   ========================= */
+
+.confetti {
+  position: fixed;
+  inset: 0;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+.confetti span {
+  position: absolute;
+
+  width: 8px;
+  height: 14px;
+
+  background: #facc15;
+
+  animation: confettiFall 5s linear infinite;
+}
+
+
+/* Diferentes posiciones */
+
+.confetti span:nth-child(1) {
+  left: 5%;
+  animation-delay: 0s;
+}
+
+.confetti span:nth-child(2) {
+  left: 15%;
+  animation-delay: 1s;
+  background: #38bdf8;
+}
+
+.confetti span:nth-child(3) {
+  left: 25%;
+  animation-delay: 2s;
+  background: #f472b6;
+}
+
+.confetti span:nth-child(4) {
+  left: 35%;
+  animation-delay: 0.5s;
+  background: #a78bfa;
+}
+
+.confetti span:nth-child(5) {
+  left: 45%;
+  animation-delay: 1.5s;
+}
+
+.confetti span:nth-child(6) {
+  left: 55%;
+  animation-delay: 3s;
+  background: #34d399;
+}
+
+.confetti span:nth-child(7) {
+  left: 65%;
+  animation-delay: 0.8s;
+  background: #f472b6;
+}
+
+.confetti span:nth-child(8) {
+  left: 75%;
+  animation-delay: 2.3s;
+  background: #38bdf8;
+}
+
+.confetti span:nth-child(9) {
+  left: 85%;
+  animation-delay: 1.2s;
+  background: #a78bfa;
+}
+
+.confetti span:nth-child(10) {
+  left: 95%;
+  animation-delay: 3.5s;
+  background: #34d399;
+}
+
+.confetti span:nth-child(11) {
+  left: 30%;
+  animation-delay: 4s;
+  background: #f472b6;
+}
+
+.confetti span:nth-child(12) {
+  left: 80%;
+  animation-delay: 4.5s;
+  background: #facc15;
+}
+
+
+/* Caída */
+
+@keyframes confettiFall {
+
+  0% {
+    top: -20px;
+    transform: rotate(0deg);
+  }
+
+  100% {
+    top: 110vh;
+    transform: rotate(720deg);
+  }
+
+}
+
+
+/* =========================
+   MENSAJE DE CUMPLEAÑOS
+   ========================= */
+
+.birthday-message {
+  display: none;
+
+  margin-top: 30px;
+
+  font-size: clamp(2rem, 6vw, 4rem);
+
+  font-weight: 800;
+
+  color: white;
+
+  text-shadow:
+    0 0 10px rgba(250, 204, 21, 0.9),
+    0 0 30px rgba(236, 72, 153, 0.8),
+    0 0 60px rgba(168, 85, 247, 0.7);
+
+  animation: birthdayMessage 1.5s ease-in-out infinite;
+}
+
+
+@keyframes birthdayMessage {
+
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.08);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+
+}
+
+
+/* =========================
+   CELEBRACIÓN
+   ========================= */
+
+.birthday-message {
+  display: none;
+
+  margin-top: 30px;
+
+  text-align: center;
+
+  animation: celebrationAppear 1s ease-out forwards;
+}
+
+
+/* Emojis superiores */
+
+.celebration-emoji {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+
+  margin-bottom: 20px;
+
+  animation: celebrationEmoji 1.5s ease-in-out infinite;
+}
+
+
+/* Título */
+
+.birthday-message h2 {
+  font-size: clamp(2.5rem, 8vw, 6rem);
+
+  line-height: 1.1;
+
+  font-weight: 900;
+
+  color: white;
+
+  text-shadow:
+    0 0 10px rgba(250, 204, 21, 1),
+    0 0 25px rgba(236, 72, 153, 0.9),
+    0 0 50px rgba(168, 85, 247, 0.8);
+
+  animation: birthdayTitle 2s ease-in-out infinite;
+}
+
+
+/* Mensaje inferior */
+
+.birthday-message p {
+  margin-top: 25px;
+
+  font-size: clamp(1.2rem, 3vw, 2rem);
+
+  color: #e0e7ff;
+}
+
+
+/* =========================
+   ANIMACIONES
+   ========================= */
+
+@keyframes celebrationAppear {
+
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+
+  70% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+}
+
+
+@keyframes celebrationEmoji {
+
+  0% {
+    transform: scale(1) rotate(-5deg);
+  }
+
+  50% {
+    transform: scale(1.2) rotate(5deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(-5deg);
+  }
+
+}
+
+
+@keyframes birthdayTitle {
+
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+
+}
+
+
+/* =========================
+   MODO CUMPLEAÑOS
+   ========================= */
+
+body.birthday-mode {
+
+  background:
+    radial-gradient(circle at 20% 20%,
+      rgba(236, 72, 153, 0.7),
+      transparent 30%),
+    radial-gradient(circle at 80% 20%,
+      rgba(250, 204, 21, 0.7),
+      transparent 30%),
+    radial-gradient(circle at 50% 80%,
+      rgba(34, 211, 238, 0.6),
+      transparent 30%),
+    #312e81;
+
+  background-size: 250% 250%;
+
+  animation: celebrationBackground 5s ease-in-out infinite;
+}
+
+
+@keyframes celebrationBackground {
+
+  0% {
+    background-position: 0% 0%;
+  }
+
+  25% {
+    background-position: 100% 50%;
+  }
+
+  50% {
+    background-position: 50% 100%;
+  }
+
+  75% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+
+}
